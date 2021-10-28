@@ -4,6 +4,7 @@ MAX = 1
 MAX = 2
 p MAX
 
+# 多重代入
 a, b = 1, 2
 p a
 p b
@@ -20,6 +21,15 @@ a #=> 3
 a, *, b = 1, 2, 3, 4
 a #=>1
 b #=>4
+
+# 右代入
+{ a: 1, b: 2, c: 3 } => hash
+p hash #=> [1, 2, 3]
+
+{ a: 1, b: 2, c: 3 } => { a:, b:, c: } #=> warning: One-line pattern matching is experimental, and the behavior may change in future versions of Ruby!
+p a #=> 1
+p b #=> 2
+p c #=> 3
 
 def m
   local_var = 1
