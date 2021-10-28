@@ -1,0 +1,17 @@
+task :task1 do
+  puts 'task1'
+end
+task :task2 do
+  puts 'task2'
+end
+task :task3 => [:task1, :task2] do
+  puts 'task3'
+end
+
+file 'Gemfile' do
+  f = File.open('Gemfile', 'w')
+  f.puts("source 'https://rubygems.org'")
+  f.puts("gem 'rails', '~>5'")
+
+  puts 'Gemfile created'
+end
