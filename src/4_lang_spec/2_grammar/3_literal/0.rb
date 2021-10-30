@@ -224,3 +224,30 @@ p true =~ true
 p true == true ? 1 : 2
 p (if true == true; 1; else 2; end)
 
+# シンボル
+p :my_symbol
+p :'my-symbol'
+p :"my-symbol"
+p %s{my-symbol}
+
+# %記法
+p %!ダブルクォート!
+p %Q!ダブルクォート!
+p %q!シングルクォート!
+p %x!date! # コマンド
+p %r!(正規表現|regular)!
+name = 'ytyaru'
+p %w!(ab cd ef gh #{name})!
+p %W!(ab cd ef gh #{name})!
+p %s!(#{name})!
+p %i!(:sym1 :sym2 :sym3 :"#{name}")!
+p %I!(:sym1 :sym2 :sym3 :"#{name}")!
+
+p %?some? #=> "some"
+p %$some$ #=> "some"
+p %%some% #=> "some"
+p %&some& #=> "some"
+p %-some- #=> "some"
+
+p %!name!
+p %!#{name}!
