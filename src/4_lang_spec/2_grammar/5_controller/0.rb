@@ -161,11 +161,20 @@ def m
 end
 p m
 
+#BEGIN { p 'BEGIN 0' } if false # syntax error, unexpected `if' modifier, expecting end-of-input
+#if false
+#  BEGIN { p 'BEGIN 0' } # BEGIN is permitted only at toplevel
+#end
 BEGIN { p 'BEGIN 1' }
 BEGIN { p 'BEGIN 2' }
 BEGIN { p 'BEGIN 3' }
+BEGIN { begin_local = 111 }
 
+END { p 'END 0' } if false
 END { p 'END 1' }
 END { p 'END 2' }
 END { p 'END 3' }
+END { end_local = 222 }
+p "begin_local=#{begin_local}"
+p "end_local=#{end_local}"
 
