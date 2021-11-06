@@ -9,6 +9,7 @@ Run() {
 	cd "$HERE"
 	echo -e "abc\n山田" | ruby ./0.rb
 	ruby ./0.rb ./0.txt
+	ruby ./0.rb ./0.txt ./1.txt
 # ARGF.argv
 # No such file or directory @ rb_sysopen ... (Errno::ENOENT)
 #	ruby ./0.rb --flag ./0.txt
