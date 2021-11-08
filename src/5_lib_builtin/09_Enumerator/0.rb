@@ -40,4 +40,24 @@ scanner = StringScanner.new("7+38/6")
 PATTERN = %r{\d+|[-/+*]}
 p Enumerator.produce { scanner.scan(PATTERN) }.slice_after { scanner.eos? }.first# => ["7", "+", "38", "/", "6"]
 
+str = "Yet Another Ruby Hacker"
+#enum = Enumerator.new(str, :scan, /\w+/)#=> tried to create Proc object without a block (ArgumentError)
+#enum = Enumerator.new{|y| y << %w(Yet Another Ruby Hacker)}
+enum = Enumerator.new{|y| 
+  y << 'Yet' 
+  y << 'Another' 
+  y << 'Ruby' 
+  y << 'Hacker'}
+p "size:#{enum.size}"
+enum.each {|word| p word }              # => "Yet"
+                                        #    "Another"
+                                        #    "Ruby"
+                                        #    "Hacker"
+str.scan(/\w+/) {|word| p word }        # => "Yet"
+                                        #    "Another"
+                                        #    "Ruby"
+                                        #    "Hacker"
 
+p (1..100).to_a.permutation(4).size # => 94109400
+p loop.size # => Float::INFINITY
+p (1..100).drop_while.size # => nil
